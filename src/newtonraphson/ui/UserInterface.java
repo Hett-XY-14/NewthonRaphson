@@ -35,6 +35,9 @@ public class UserInterface extends JFrame{
     public JButton submitEquation;
     public JButton back;
     
+    public JPanel resultsSection;
+    public JLabel results;
+    
     public UserInterface(String title, int degree) {
         
         initialize(title, degree);
@@ -106,5 +109,16 @@ public class UserInterface extends JFrame{
     public void setActionListener(ActionListener listener) {
         submitEquation.addActionListener(listener);
         back.addActionListener(listener);
+    }
+    
+    public void generateResultsSection(double root) {
+        this.instruction.setText("La raíz resultante es la siguiente: ");
+        this.inputSection.setVisible(false);
+        this.buttonsSection.setVisible(false);
+        this.results = new JLabel(Double.toString(root));
+        this.resultsSection = new JPanel();
+        this.resultsSection.add(this.results);
+        this.body.add(resultsSection);
+        this.repaint();
     }
 }

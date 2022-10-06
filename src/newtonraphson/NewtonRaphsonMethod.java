@@ -25,7 +25,7 @@ public class NewtonRaphsonMethod {
         this.f = equationCoefficients;
         this.df = derivatePolynomial(this.f);
         this.x0 = initialPoint;
-        this.x1 = -1;
+        this.x1 = 0;
         this.error = error;
     }
     
@@ -43,7 +43,7 @@ public class NewtonRaphsonMethod {
         double result = 0;
         for (int i=0; i<function.length; i+=1) {
             int exponent = function.length -1 -i;
-            result += function[i] * (abscissa * Math.exp(exponent));
+            result += function[i] * (Math.pow(abscissa, exponent));
         }
         return result;
     }
@@ -59,7 +59,7 @@ public class NewtonRaphsonMethod {
         // (the place where they are stored, that is polynomialLength-i) then stores it one place to the right 
         // meaning its exponent is one less than the original
         for(int i=0; i<polynomialLength-1; i+=1) {
-            resultEquation[i] = polynomial[i] * polynomialLength-i;
+            resultEquation[i] = polynomial[i] * (polynomialLength-1-i);
         }
         return resultEquation;
     }
